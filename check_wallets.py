@@ -6,7 +6,7 @@ def load_wallets(file_path):
     :return: Список кошельков
     """
     with open(file_path, 'r') as file:
-        wallets = [line.strip() for line in file if line.strip()]
+        wallets = [line.strip().lower() for line in file if line.strip()]
     return wallets
 
 def check_wallet(wallet_to_check, wallet_list):
@@ -17,6 +17,7 @@ def check_wallet(wallet_to_check, wallet_list):
     :param wallet_list: Список кошельков
     :return: Сообщение о результате проверки
     """
+    wallet_to_check = wallet_to_check.strip().lower()
     if wallet_to_check in wallet_list:
         return f'Кошелек {wallet_to_check} найден в списке.'
     else:
